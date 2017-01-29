@@ -17,37 +17,11 @@ function previewPhoto(input) {
         reader.readAsDataURL(input.files[0]);
         
         $('#confirmButton').prop('disabled', false);
-        $('#photoModal').modal('hide');
     }
 }
 </script>
 </head>
 <body>
-<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col"><label class="btn btn-primary">Take Photo</label></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"><label class="btn btn-primary btn-file">
-                            Photo Library <input type="file" style="display: none;" onchange="previewPhoto(this);">
-                        </label></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col"><label class="btn btn-primary" id="cancelButton" data-dismiss="modal">Cancel</label></div>
-                    </div>
-                </div>                
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container-fluid p-0">
     <div class="container-fluid header">
         <div class="row">
@@ -58,7 +32,7 @@ function previewPhoto(input) {
     <div class="container">
     <form action="consents.html" method="GET">
         <p>Insert photocopy of ARC (Alien Resident Certificate)</p>
-        <div class="image"><button type="button" data-toggle="modal" data-target="#photoModal"><img id="photocopy" src="./img/photocopy.png" /></button></div>
+        <div class="image"><label class="btn"><img id="photocopy" src="./img/photocopy.png" /><input type="file" style="display: none;" onchange="previewPhoto(this);"></label></div>
         <button type="submit" id="confirmButton" class="bottom" disabled>Confirm to upload</button>
     </form>
 </div>
