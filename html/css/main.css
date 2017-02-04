@@ -35,29 +35,13 @@ div.header {
 	vertical-align: super;
 }
 
-.italic {
-	font-style: italic;
-}
-
-.underscore {
-    border-style: solid;
-    border-bottom-width: 1px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-left-width: 0;
-}
-
-.noborder {
-	border-width: 0;
-}
-
 button.flag {
 	background-color: white;
 	padding: 0;
 	margin: 2%;
 	border: 0;
-	width: 100%; #320px;
-	height: auto; #213px;
+	width: 100%;
+	height: auto;
 }
 
 img {
@@ -73,7 +57,6 @@ img {
 div.footer {
     position:fixed;
     bottom: 0;
-    #right: 0;
     padding-bottom: 0;
     margin-bottom: 0;
 }
