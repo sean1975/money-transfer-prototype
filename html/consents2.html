@@ -34,9 +34,12 @@ if(mm<10) {
 } 
 today = yyyy+'/'+mm+'/'+dd;
 $(document).ready(function() {
-	$('#sig').jSignature(); 
+	$('#sig').jSignature();
+	$('#sig').jSignature('reset');
 	var sigString = getParameterByName('sig');
 	$('#sig').jSignature("setData", sigString, 'base30');
+	var svgString = $('#sig').jSignature('getData', 'svgbase64');
+	$('#sigString').val(svgString);
     $('#date').text(today);
 });
 </script>
@@ -58,8 +61,9 @@ $(document).ready(function() {
 I understand that the Company will maintain the confidentiality of my information concerning this Application and Power of Attorney   (including future remittance entrustment, if applicable) in accordance with the Personal Information Protection Act and other applicable legislation.  I agree that the Company may, for special purpose as shown on the reverse of this form, collect, process on a computer, export and use my personal information and information on this Application and Power of Attorney, or disclose it to third parties.  I also agree that, with respect to matters not covered herein, you may handle my personal information and information on this Application and Power of Attorney in accordance with applicable regulations of the competent authorities, and that of your and your cooperating partners involved in processing my Application and Power of Attorney (including future remittance entrustment, if applicable). 
 I hereby declare that I have reviewed the entire contents of all the terms and conditions regarding this Application and Power of Attorney as shown on the reverse, and that I fully understand them, and my signature on this form indicates my agreement to these terms and conditions.</p>
             <p>Signature of Consignor</p>
-            <p><div class="row"><div class="col"><div id="sig" class="signature"></div></div></div></p>
+            <p><div class="row"><div class="col"><div id="sig"></div></div></div></p>
             <div class="row"><div class="col"><div class="label">Date: <span id="date"></span></div></div></div>
+            <input type="hidden" id="sigString" name="sig" value="">
             <button type="submit" class="bottom">Next</button>
         </form>
     </div>

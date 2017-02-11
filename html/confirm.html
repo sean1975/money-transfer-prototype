@@ -3,11 +3,66 @@
 <head>
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Confirm and Submit</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="libs/flashcanvas.js"></script>
+<![endif]-->
+<script src="js/jSignature.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
+<script>
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mm<10) {
+    mm='0'+mm
+} 
+today = yyyy+'/'+mm+'/'+dd;
+
+$(document).ready(function() {
+	var sigString = getParameterByName('sig');
+	if (sigString != undefined) {
+		var iframe = document.createElement('iframe');
+		// When document ready event is fired, the iframe object
+		// is not ready yet. So, need to delay the signature and
+		// date until iframe is ready
+		iframe.onload = function() {
+			var dateDiv = $('#form').contents().find('#date');
+			$('#form').contents().find('#date').text(today);
+			var sigImg = new Image();
+			sigImg.src = 'data:' + sigString;
+			var sigDiv = $('#form').contents().find('#sig');
+			sigDiv.append(sigImg);
+	    };
+		iframe.id = 'form';
+		iframe.src = './form.html?sig=' + sigString;
+		iframe.width = '100%';
+		iframe.height = '400px';
+		$('#btn').before(iframe);
+	}
+
+});
+</script>
 </head>
 <body>
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" >
     <div class="container-fluid header">
         <div class="row">
             <div class="col-4"><h3>Step 6</h3></div>
@@ -17,10 +72,10 @@
     <div class="container">
     <form action="complete.html" method="GET">
         <p>Now, you’re almost finished. Please check your information again before sending it out.</p>
-        <div class="image"><img src="./img/confirm.png" /></div>
-        <button type="submit" class="bottom">Confirm and Submit</button>
+        <!-- iframe to be added here by javascript -->
+        <button id="btn" type="submit" class="bottom">Confirm and Submit</button>
     </form>
-</div>
+    </div>
 </div>
 </body>
 </html>
