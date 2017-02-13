@@ -6,12 +6,39 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <link rel="stylesheet" href="css/main.css">
 <script>
+function imageToDataUri(img, width, height) {
+    // create an off-screen canvas
+    var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+
+    // set its dimension to target size
+    canvas.width = width;
+    canvas.height = height;
+
+    // draw source image into the off-screen canvas:
+    ctx.drawImage(img, 0, 0, width, height);
+    
+    // encode image to data-uri with base64 version of compressed image
+    return canvas.toDataURL();
+}
+
+function setPhoto(img) {
+    if (img.naturalWidth > 640) {
+    	var scale = 640 / img.naturalWidth;
+    	$('#photo').val(imageToDataUri(img, 640, scale * img.naturalHeight));
+    } else {
+    	$('#photo').val($('#photocopy').attr('src'));
+    }
+}
+
 function previewPhoto(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             $('#photocopy').attr('src', e.target.result);
+            if ($('#photocopy').width() < $('#photocopy').height()) {
+            }
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -30,9 +57,10 @@ function previewPhoto(input) {
         </div>
     </div>
     <div class="container">
-    <form action="consents.html" method="GET">
+    <form action="consents.html" method="post">
         <p>Insert photocopy of ARC (Alien Resident Certificate)</p>
-        <div class="image"><label class="btn"><img id="photocopy" src="./img/photocopy.png" /><input type="file" style="display: none;" onchange="previewPhoto(this);"></label></div>
+        <div class="image"><label class="btn"><img class="btn" id="photocopy" src="./img/photocopy.png" onload="setPhoto(this);"/><input type="file" style="display: none;" onchange="previewPhoto(this);"></label></div>
+        <input type="hidden" id="photo" name="photo" value="">
         <button type="submit" id="confirmButton" class="bottom" disabled>Confirm to upload</button>
     </form>
 </div>

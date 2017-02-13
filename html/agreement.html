@@ -6,23 +6,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
-<script>
-function getParameterByName(name, url) {
-    if (!url) {
-      url = window.location.href;
-    }
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-$(document).ready(function() {
-	var sigString = getParameterByName('sig');
-	$('#sigString').val(sigString);
-});
-</script>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -33,7 +16,7 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="container">
-    <form action="confirm.html" method="GET">
+    <form action="confirm.html" method="post">
         <p>The Registration Program (“Program”) is provided by the Company on the following Terms and Conditions (“Agreement”)</p>
         <p class="text-left" style="text-indent: 2em">1. Description of the Registration Program.  This Program makes using the Service more convenient by allowing you to pay the entrusted remittance principal and Service fee to the Company through authorized money collection service providers designated by the Company (“Money Collection Service Providers”) without your having to attend Company locations each time you would like to perform a Service transaction.  Also, the Program allows you to provide information about yourself and about persons to whom you frequently send money (your “Recipients”) to the Company and a licensed Taiwanese foreign exchange bank (“Bank”), Western Union (or, in some instances, its Agents, mobile phone provider or mWallet account provider) (collectively, “Cooperating Partners”).  The Company will store this information electronically so that it will be available automatically at Money Collection Service Provider locations at the time of making a Service transaction.  All Service transactions processed under the Program are subject to and will be processed under the terms and conditions of this Agreement as well as the Service transaction terms and conditions which your must accept to process each Service transaction.  In order to make any Service transaction (whether or not you have been enrolled in the Program), you must comply with any applicable law and the Company’s and its Cooperating Partners’ policies relevant to initiating Service transactions in Taiwan at the time the Service transaction is made.</p>
         <p style="text-align:left; text-indent: 2em">2. Initiating a Transaction.  To initiate a Service transaction, go to any Money Collection Service Provider location and look for an automated kiosk machine. Following the simple instructions on the screen by keying in the relevant information for the Service transaction.  After you complete the Service request at the automated kiosk machine, please present the Service request (as printed by the automated kiosk machine) to the cashier of the Money Collection Service Provider and pay the relevant amount as indicated on the acknowledgement note to the cashier.  The cashier will acknowledge receipt of the Service principal and any Service fee(s) and charges(s) on the receipt after collecting the requisite amount from you.  Please retain the receipt for your own safekeeping.  If you have any questions about your Service request, please contact the Company.<p>
@@ -43,7 +26,8 @@ $(document).ready(function() {
         <p style="text-align:left; text-indent: 2em">6. Limitation of Liability.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE TOTAL AMOUNT OF COMPENSATION FOR THE DAMAGES CAUSED BY THE COMPANY AND COOPERATING PARTNERS FOR DELAY, NONPAYMENT OR UNDERPAYMENT IN PROVIDING THE SERVICE, WHETHER CAUSED BY NEGLIGENCE ON THE PART OF THE COMPANY, COOPERATING PARTNERS OR THEIR RESPECTIVE EMPLOYEES OR AGENTS OR OTHERWISE, IF ANY, SHALL BE A REFUND OF THE PRINCIPAL AMOUNT ENTRUSTED FOR REMITTANCE AND THE SERVICE FEE, PLUS DAILY INTEREST PAYMENT CALCULATED BASED ON THE FIXED ANNUAL INTEREST RATE FOR A ONE-YEAR TERM DEPOSIT WITH THE TAIWAN POST CO., LTD. OR A 5% PER ANNUM INTEREST RATE UNDER ARTICLE 203 OF THE CIVIL CODE, WHICHEVER IS HIGHER TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE COMPANY AND COOPERATING PARTNERS SHALL NOT BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES NOT CAUSED BY THE COMPANY OR COOPERATING PARTNERS. YOUR TRANSACTION DATA IS CONFIDENTIAL AND SHOULD NOT BE SHARED WITH ANY PERSON OTHER THAN YOUR RECEIVER.<p>
         <p style="text-align:left; text-indent: 2em">7. Data Privacy. You agree that the Company may collect, computer process, use, and disclose your personal information to Cooperating Partners for THEM to computer process and use. The information is used primarily by the Company and Cooperating Partners to complete your transaction and administer your Program registration and participation. Without this information, your transaction and Program registration/participation may not be completed. The information disclosed may include information describing your transactions with the Company; identification information, such as the name, telephone number, date of birth, arc number, address and other information about you and your Recipients. You agree that the Company and Cooperating Partners may also disclose your personal information to Taiwanese and foreign regulatory or law enforcement agencies where the Company and Cooperating Partners are authorized or compelled by law. Further, you agree that the Company may transfer your information to Western Union for Western Union to use such information to contact you about other products and services associated with Western Union.<p>
         <p style="text-align:left; text-indent: 2em">Governing Law and Dispute Resolution.  The rights and obligations under this application shall be construed in accordance with the laws of the Republic of China.  The Taiwan Taipei District Court shall have first instance jurisdiction over all legal actions or procedures arising from, or in connection with, this Agreement.<p>
-        <input type="hidden" id="sigString" name="sig" value="">
+        <input type="hidden" id="sigString" name="sig" value="{{ sig }}">
+        <input type="hidden" id="photo" name="photo" value="{{ photo }}">
         <button type="submit" class="bottom">Agree</button>
     </form>
 </div>

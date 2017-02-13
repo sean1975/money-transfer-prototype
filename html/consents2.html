@@ -9,17 +9,6 @@
 <![endif]-->
 <script src="js/jSignature.min.js"></script>
 <script>
-function getParameterByName(name, url) {
-    if (!url) {
-      url = window.location.href;
-    }
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -36,7 +25,7 @@ today = yyyy+'/'+mm+'/'+dd;
 $(document).ready(function() {
 	$('#sig').jSignature();
 	$('#sig').jSignature('reset');
-	var sigString = getParameterByName('sig');
+	var sigString = "{{ sig }}";
 	$('#sig').jSignature("setData", sigString, 'base30');
 	var svgString = $('#sig').jSignature('getData', 'svgbase64');
 	$('#sigString').val(svgString);
@@ -55,7 +44,7 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="container-fluid">
-        <form action="agreement.html" method="GET">
+        <form action="agreement.html" method="post">
             <p>Consents and Acknowledgements </p>
             <p>The Company’s future remittance entrustment services may not used to, and I confirm that I shall not use such services to repay foreign loans taken out by me in order to work in Taiwan.
 I understand that the Company will maintain the confidentiality of my information concerning this Application and Power of Attorney   (including future remittance entrustment, if applicable) in accordance with the Personal Information Protection Act and other applicable legislation.  I agree that the Company may, for special purpose as shown on the reverse of this form, collect, process on a computer, export and use my personal information and information on this Application and Power of Attorney, or disclose it to third parties.  I also agree that, with respect to matters not covered herein, you may handle my personal information and information on this Application and Power of Attorney in accordance with applicable regulations of the competent authorities, and that of your and your cooperating partners involved in processing my Application and Power of Attorney (including future remittance entrustment, if applicable). 
@@ -64,6 +53,7 @@ I hereby declare that I have reviewed the entire contents of all the terms and c
             <p><div class="row"><div class="col"><div id="sig"></div></div></div></p>
             <div class="row"><div class="col"><div class="label">Date: <span id="date"></span></div></div></div>
             <input type="hidden" id="sigString" name="sig" value="">
+            <input type="hidden" id="photo" name="photo" value="{{ photo }}">
             <button type="submit" class="bottom">Next</button>
         </form>
     </div>
