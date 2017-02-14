@@ -26,8 +26,8 @@ if(mm<10) {
 today = yyyy+'/'+mm+'/'+dd;
 
 $(document).ready(function() {
-	var sigString = "{{ sig }}";
-	var photo = "{{ photo }}";
+	var sigString = $('#sigString').val();
+	var photo = $('#photo').val();
 	if (sigString != undefined && photo != undefined) {
 		var iframe = document.createElement('iframe');
 		// When document ready event is fired, the iframe object
@@ -42,6 +42,24 @@ $(document).ready(function() {
 			sigDiv.append(sigImg);
 			
 	        $('#form').contents().find('#photocopy').attr('src', photo);
+
+	        $('#form').contents().find('#first_name').text($('input[name="first_name"]')[0].value);
+	        $('#form').contents().find('#last_name').text($('input[name="last_name"]')[0].value);
+	        $('#form').contents().find('#phone').text($('input[name="phone"]')[0].value);
+	        $('#form').contents().find('#arc').text($('input[name="arc"]')[0].value);
+	        $('#form').contents().find('#first_name1').text($('input[name="first_name1"]')[0].value);
+	        $('#form').contents().find('#last_name1').text($('input[name="last_name1"]')[0].value);
+	        $('#form').contents().find('#country1').text($('input[name="country"]')[0].value);
+	        $('#form').contents().find('#first_name2').text($('input[name="first_name2"]')[0].value);
+	        $('#form').contents().find('#last_name2').text($('input[name="last_name2"]')[0].value);
+	        if (len($('#form').contents().find('#last_name2').text) > 0) {
+	            $('#form').contents().find('#country2').text($('input[name="country"]')[0].value);
+	        }
+	        $('#form').contents().find('#first_name3').text($('input[name="first_name3"]')[0].value);
+	        $('#form').contents().find('#last_name3').text($('input[name="last_name3"]')[0].value);
+	        if (len($('#form').contents().find('#last_name3').text) > 0) {
+	            $('#form').contents().find('#country3').text($('input[name="country"]')[0].value);
+	        }
 	    };
 		iframe.id = 'form';
 		iframe.src = './form.html';
@@ -62,6 +80,19 @@ $(document).ready(function() {
     </div>
     <div class="container">
     <form action="complete.html" method="post">
+        <input type="hidden" name="country" value="{{ country }}" />
+        <input type="hidden" name="first_name" value="{{ first_name }}" />
+        <input type="hidden" name="last_name" value="{{ last_name }}" />
+        <input type="hidden" name="phone" value="{{ phone }}" />
+        <input type="hidden" name="arc" value="{{ arc }}" />
+        <input type="hidden" name="first_name1" value="{{ first_name1 }}" />
+        <input type="hidden" name="last_name1" value="{{ last_name1 }}" />
+        <input type="hidden" name="first_name2" value="{{ first_name2 }}" />
+        <input type="hidden" name="last_name2" value="{{ last_name2 }}" />
+        <input type="hidden" name="first_name3" value="{{ first_name3 }}" />
+        <input type="hidden" name="last_name3" value="{{ last_name3 }}" />
+        <input type="hidden" id="photo" name="photo" value="{{ photo }}">
+        <input type="hidden" id="sigString" name="sig" value="{{ sig }}">
         <p>Now, you’re almost finished. Please check your information again before sending it out.</p>
         <!-- iframe to be added here by javascript -->
         <button id="btn" type="submit" class="bottom">Confirm and Submit</button>

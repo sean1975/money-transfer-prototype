@@ -16,6 +16,11 @@
     </div>
     <div class="container">
     <form action="photocopy.html" method="post">
+        <input type="hidden" name="country" value="{{ country }}" />
+        <input type="hidden" name="first_name" value="{{ first_name }}" />
+        <input type="hidden" name="last_name" value="{{ last_name }}" />
+        <input type="hidden" name="phone" value="{{ phone }}" />
+        <input type="hidden" name="arc" value="{{ arc }}" />
         <p>Pre-register up to 3 recipients of remittances in English<br>Receiving Country: the Philippines</p>
         
         <p class="text-left pl-2" style="background-color:yellow">Recipient 1</p>
@@ -26,7 +31,7 @@
                         <label for="first_name1" class="mb-0">First Name (&amp; Middle Name if applicable)</label>
                     </div>
                     <div class="col-12 text-md-right">
-                        <input id="first_name1" class="mb-1" type="text" placeholder="Please enter recipient's first name" />
+                        <input id="first_name1" name="first_name1" class="mb-1" type="text" required placeholder="Please enter recipient's first name" />
                     </div>
                 </div>
             </div>
@@ -36,7 +41,7 @@
                         <label for="last_name1" class="mb-0">Last Name</label>
                     </div>
                     <div class="col-12 text-md-left">
-                        <input id="last_name1" class="mb-1" type="text" placeholder="Please enter recipient's last name" />
+                        <input id="last_name1" name="last_name1" class="mb-1" type="text" required placeholder="Please enter recipient's last name" />
                     </div>
                 </div>
             </div>
@@ -51,7 +56,7 @@
                         <label for="first_name2" class="mb-0">First Name (&amp; Middle Name if applicable)</label>
                     </div>
                     <div class="col-12 text-md-right">
-                        <input id="first_name2" class="mb-1" type="text" placeholder="Please enter recipient's first name" />
+                        <input id="first_name2" name="first_name2" class="mb-1" type="text" placeholder="Please enter recipient's first name" />
                     </div>
                 </div>
             </div>
@@ -61,7 +66,7 @@
                         <label for="last_name2" class="mb-0">Last Name</label>
                     </div>
                     <div class="col-12 text-md-left">
-                        <input id="last_name2" class="mb-1" type="text" placeholder="Please enter recipient's last name" />
+                        <input id="last_name2" name="last_name2" class="mb-1" type="text" placeholder="Please enter recipient's last name" />
                     </div>
                 </div>
             </div>
@@ -76,7 +81,7 @@
                         <label for="first_name3" class="mb-0">First Name (&amp; Middle Name if applicable)</label>
                     </div>
                     <div class="col-12 text-md-right">
-                        <input id="first_name3" class="mb-1" type="text" placeholder="Please enter recipient's first name" />
+                        <input id="first_name3" name="first_name3" class="mb-1" type="text" placeholder="Please enter recipient's first name" />
                     </div>
                 </div>
             </div>
@@ -86,7 +91,7 @@
                         <label for="last_name3" class="mb-0">Last Name</label>
                     </div>
                     <div class="col-12 text-md-left">
-                        <input id="last_name3" class="mb-1" type="text" placeholder="Please enter recipient's last name" />
+                        <input id="last_name3" name="last_name3" class="mb-1" type="text" placeholder="Please enter recipient's last name" />
                     </div>
                 </div>
             </div>

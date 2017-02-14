@@ -52,8 +52,19 @@ I hereby declare that I have reviewed the entire contents of all the terms and c
             <p>Signature of Consignor</p>
             <p><div class="row"><div class="col"><div id="sig"></div></div></div></p>
             <div class="row"><div class="col"><div class="label">Date: <span id="date"></span></div></div></div>
-            <input type="hidden" id="sigString" name="sig" value="">
+            <input type="hidden" name="country" value="{{ country }}" />
+            <input type="hidden" name="first_name" value="{{ first_name }}" />
+            <input type="hidden" name="last_name" value="{{ last_name }}" />
+            <input type="hidden" name="phone" value="{{ phone }}" />
+            <input type="hidden" name="arc" value="{{ arc }}" />
+            <input type="hidden" name="first_name1" value="{{ first_name1 }}" />
+            <input type="hidden" name="last_name1" value="{{ last_name1 }}" />
+            <input type="hidden" name="first_name2" value="{{ first_name2 }}" />
+            <input type="hidden" name="last_name2" value="{{ last_name2 }}" />
+            <input type="hidden" name="first_name3" value="{{ first_name3 }}" />
+            <input type="hidden" name="last_name3" value="{{ last_name3 }}" />
             <input type="hidden" id="photo" name="photo" value="{{ photo }}">
+            <input type="hidden" id="sigString" name="sig" value="">
             <button type="submit" class="bottom">Next</button>
         </form>
     </div>

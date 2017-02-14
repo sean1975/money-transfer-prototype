@@ -60,6 +60,17 @@ function previewPhoto(input) {
     <form action="consents.html" method="post">
         <p>Insert photocopy of ARC (Alien Resident Certificate)</p>
         <div class="image"><label class="btn"><img class="btn" id="photocopy" src="./img/photocopy.png" onload="setPhoto(this);"/><input type="file" style="display: none;" onchange="previewPhoto(this);"></label></div>
+        <input type="hidden" name="country" value="{{ country }}" />
+        <input type="hidden" name="first_name" value="{{ first_name }}" />
+        <input type="hidden" name="last_name" value="{{ last_name }}" />
+        <input type="hidden" name="phone" value="{{ phone }}" />
+        <input type="hidden" name="arc" value="{{ arc }}" />
+        <input type="hidden" name="first_name1" value="{{ first_name1 }}" />
+        <input type="hidden" name="last_name1" value="{{ last_name1 }}" />
+        <input type="hidden" name="first_name2" value="{{ first_name2 }}" />
+        <input type="hidden" name="last_name2" value="{{ last_name2 }}" />
+        <input type="hidden" name="first_name3" value="{{ first_name3 }}" />
+        <input type="hidden" name="last_name3" value="{{ last_name3 }}" />
         <input type="hidden" id="photo" name="photo" value="">
         <button type="submit" id="confirmButton" class="bottom" disabled>Confirm to upload</button>
     </form>
